@@ -1,8 +1,8 @@
 // src/api/pokemonWithJapaneseName.ts
-import { INITIAL_POKEMON_LIST_LIMIT } from '../config';
-import { fetchPokemonList, PokemonListResult } from './pokemon';
-import { Pokemon } from './pokemon.type';
-import { fetchPokemonJapaneseName } from './pokemonSpecies';
+import { INITIAL_POKEMON_LIST_LIMIT } from '../config.ts';
+import { fetchPokemonList, type PokemonListResult } from './pokemon.ts';
+import type { Pokemon } from './pokemon.type.ts';
+import { fetchPokemonJapaneseName } from './pokemonSpecies.ts';
 
 // ポケモンの日本語名を含む拡張情報を表す型
 export type PokemonWithJapaneseName = {

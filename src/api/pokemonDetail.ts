@@ -2,7 +2,7 @@
 import type { FlavorTextEntry, PokemonAbility, PokemonStat, PokemonType } from './pokemon.type';
 import type { Name } from './common.type';
 
-type PokemonDetail = {
+export type PokemonDetail = {
   id: number;
   name: string;
   japaneseName: string;

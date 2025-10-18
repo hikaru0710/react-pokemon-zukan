@@ -1,5 +1,5 @@
 // src/api/pokemon.ts
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL } from '../config.ts';
 
 export interface PokemonListResult {
   count: number;

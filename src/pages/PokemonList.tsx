@@ -1,9 +1,9 @@
 // src/pages/PokemonList.tsx
 import React, { useEffect, useRef } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { apiQueryKeys } from '../queryKeys';
-import { fetchPokemonListWithJapaneseNames, PokemonWithJapaneseName } from '../api/pokemonWithJapaneseName';
-import PokemonCard from '../components/PokemonCard';
+import { apiQueryKeys } from '../queryKeys.ts';
+import { fetchPokemonListWithJapaneseNames, type PokemonWithJapaneseName } from '../api/pokemonWithJapaneseName.ts';
+import PokemonCard from '../components/PokemonCard.tsx';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
