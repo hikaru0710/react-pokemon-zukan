@@ -6,18 +6,31 @@ const Navigation: React.FC = () => {
   const pathname = window.location.pathname;
 
   return (
-    <nav className="bg-gray-100 p-4">
-      <ul className="flex space-x-4">
-        {/* 一覧画面の場合は一覧ボタンを非表示 */}
-        {
-          pathname !== '/' && (
+    <nav className="nav-container">
+      <div className="container mx-auto px-4 py-3">
+        <ul className="flex space-x-6">
+          <li>
+            <Link 
+              to="/" 
+              className={`nav-link ${pathname === '/' ? 'nav-link-active' : ''}`}
+            >
+              ホーム
+            </Link>
+          </li>
+          {/* 詳細画面の場合は戻るボタンを表示 */}
+          {pathname !== '/' && (
             <li>
-              <Link to="/" className="text-blue-500 hover:underline text-decoration-none">{"< "}一覧</Link>
+              <Link 
+                to="/" 
+                className="nav-link"
+              >
+                ← 一覧に戻る
+              </Link>
             </li>
-          )
-        }
-        {/* 追加のナビゲーションリンクをここに記載 */}
-      </ul>
+          )}
+          {/* 追加のナビゲーションリンクをここに記載 */}
+        </ul>
+      </div>
     </nav>
   );
 };
