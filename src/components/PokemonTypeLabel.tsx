@@ -1,6 +1,6 @@
 // src/components/pokemonTypeLabel.tsx
 // ポケモンのタイプのラベル
-import { pokemonTypesMap } from '../pokemonTypesMap.ts';
+import { pokemonTypesMap } from '../pokemonTypesMap';
 
 type PokemonTypeLabelProps = {
   type: string;
@@ -14,7 +14,7 @@ const PokemonTypeLabel: React.FC<PokemonTypeLabelProps> = ({ type }) => {
         backgroundColor: typeInfo?.color,
       }}
       key={type}
-      className="pokemon-type-badge hover:scale-110 transform transition-all duration-200"
+      className={`text-white px-3 py-1 rounded-full w-fit`}
     >
       {typeInfo?.jaType}
     </span>
