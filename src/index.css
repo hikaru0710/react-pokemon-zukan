@@ -1,6 +1,8 @@
 /* src/index.css */
 @import "tailwindcss";
 
+/* Tailwind CSS v4 theme configuration */
+/* eslint-disable-next-line */
 @theme {
   --font-family-sans: "Noto Sans JP", "sans-serif";
   --color-brand: #ffcb05;
