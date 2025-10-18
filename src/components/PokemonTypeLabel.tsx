@@ -14,7 +14,7 @@ const PokemonTypeLabel: React.FC<PokemonTypeLabelProps> = ({ type }) => {
         backgroundColor: typeInfo?.color,
       }}
       key={type}
-      className={`text-white px-3 py-1 rounded-full w-fit`}
+      className="pokemon-type-badge hover:scale-110 transform transition-all duration-200"
     >
       {typeInfo?.jaType}
     </span>

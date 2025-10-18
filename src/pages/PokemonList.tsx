@@ -50,16 +50,27 @@ const PokemonList: React.FC = () => {
   if (status === 'error') return <div>エラーが発生しました</div>;
 
   return (
-    <div className="p-4">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        {data?.pages.map((page) =>
-          page.results.map((pokemon: PokemonWithJapaneseName) => (
-            <PokemonCard key={pokemon.name} pokemon={pokemon} />
-          ))
-        )}
-      </div>
-      <div ref={loadMoreRef} className="h-20 flex items-center justify-center">
-        {isFetchingNextPage ? <Loader /> : hasNextPage ? '続きを読み込む' : ''}
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+      <div className="container mx-auto">
+        <div className="responsive-grid">
+          {data?.pages.map((page) =>
+            page.results.map((pokemon: PokemonWithJapaneseName) => (
+              <PokemonCard key={pokemon.name} pokemon={pokemon} />
+            ))
+          )}
+        </div>
+        <div ref={loadMoreRef} className="loading-container">
+          {isFetchingNextPage ? (
+            <div className="flex items-center space-x-2">
+              <Loader />
+              <span className="text-gray-600 font-medium">読み込み中...</span>
+            </div>
+          ) : hasNextPage ? (
+            <div className="text-gray-500 font-medium">続きを読み込む</div>
+          ) : (
+            <div className="text-gray-400 font-medium">すべてのポケモンを表示しました</div>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -67,23 +78,25 @@ const PokemonList: React.FC = () => {
 
 // ローダーコンポーネント
 const Loader: React.FC = () => (
-  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900"></div>
+  <div className="loading-spinner"></div>
 );
 
 const PokemonListSkeleton: React.FC = () => {
   return (
-    <div className="p-4">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        {[...Array(18)].map((_, index) => (
-          <div key={index} className="bg-white shadow-md rounded-lg p-4">
-            <Skeleton height={120} />
-            <Skeleton width={80} height={20} className="mt-2" />
-            <Skeleton width={100} height={16} className="mt-1" />
-          </div>
-        ))}
-      </div>
-      <div className="h-10 flex items-center justify-center">
-        <Skeleton width={100} height={20} />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+      <div className="container mx-auto">
+        <div className="responsive-grid">
+          {[...Array(18)].map((_, index) => (
+            <div key={index} className="skeleton-card">
+              <Skeleton height={120} />
+              <Skeleton width={80} height={20} className="mt-2" />
+              <Skeleton width={100} height={16} className="mt-1" />
+            </div>
+          ))}
+        </div>
+        <div className="loading-container">
+          <Skeleton width={100} height={20} />
+        </div>
       </div>
     </div>
   );
