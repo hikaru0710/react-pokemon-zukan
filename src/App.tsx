@@ -5,10 +5,12 @@ import PokemonDetail from './pages/PokemonDetail';
 
 const App: React.FC = () => {
   return (
+    <>
     <Routes>
       <Route path="/" element={<PokemonList />} />
       <Route path="/pokemon/:id" element={<PokemonDetail />} />
     </Routes>
+    </>
   );
 };
 
