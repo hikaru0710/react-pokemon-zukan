@@ -1,26 +1,16 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import PokemonList from './pages/PokemonList';
-import PokemonDetail from './pages/PokemonDetail';
-import Header from './components/Header';
-import Navigation from './components/Navigation';
-import Footer from './components/Footer';
-
-const App: React.FC = () => {
+function App() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <Navigation />
-      <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<PokemonList />} />
-          <Route path="/pokemon/:id" element={<PokemonDetail />} />
-        </Routes>
-      </main>
-      <Footer />
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="bg-white p-8 rounded-lg shadow-lg">
+        <h1 className="text-3xl font-bold text-brand">
+          ポケモン図鑑アプリ
+        </h1>
+        <p className="mt-4 text-gray-600">
+          Tailwind CSSが正しく動作しています
+        </p>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default App;
-
+export default App

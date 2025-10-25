@@ -90,4 +90,3 @@ const PokemonListSkeleton: React.FC = () => {
 };
 
 export default PokemonList;
-

@@ -1,3 +1,26 @@
+// src/api/pokemon.type.ts に続けて追加
+
+export interface Pokemon {
+  id: number;
+  name: string;
+  base_experience: number;
+  height: number;
+  is_default: boolean;
+  order: number;
+  weight: number;
+  abilities: PokemonAbility[];
+  forms: NamedAPIResource[];
+  game_indices: VersionGameIndex[];
+  held_items: PokemonHeldItem[];
+  location_area_encounters: string;
+  moves: PokemonMove[];
+  sprites: PokemonSprites;
+  species: NamedAPIResource;
+  stats: PokemonStat[];
+  types: PokemonType[];
+}
+
+
 // src/api/pokemon.type.ts
 
 import { Name, NamedAPIResource } from './common.type';
@@ -112,3 +135,24 @@ export interface Type {
 }
 
 // 他のタイプ関連の型も同様に定義
+// src/api/pokemon.type.ts に続けて追加
+
+export interface Pokemon {
+  id: number;
+  name: string;
+  base_experience: number;
+  height: number;
+  is_default: boolean;
+  order: number;
+  weight: number;
+  abilities: PokemonAbility[];
+  forms: NamedAPIResource[];
+  game_indices: VersionGameIndex[];
+  held_items: PokemonHeldItem[];
+  location_area_encounters: string;
+  moves: PokemonMove[];
+  sprites: PokemonSprites;
+  species: NamedAPIResource;
+  stats: PokemonStat[];
+  types: PokemonType[];
+}

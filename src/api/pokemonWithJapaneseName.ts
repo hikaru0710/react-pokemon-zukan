@@ -21,21 +21,27 @@ export type PokemonListWithJapaneseNames = {
 };
 
 // 日本語名を含むポケモンリストを取得する関数
-export const fetchPokemonListWithJapaneseNames = async (offset: number = 0, limit: number = INITIAL_POKEMON_LIST_LIMIT): Promise<PokemonListWithJapaneseNames> => {
-  // 基本的なポケモンリストを取得
+export const fetchPokemonListWithJapaneseNames = async (
+  offset: number = 0,
+  limit: number = INITIAL_POKEMON_LIST_LIMIT
+): Promise<PokemonListWithJapaneseNames> => {
+  // 1. 基本的なポケモンリストを取得
   const pokemonList: PokemonListResult = await fetchPokemonList(offset, limit);
-  
-  // 各ポケモンの詳細情報を取得し、日本語名を追加
+
+  // 2. 各ポケモンの詳細情報を取得し、日本語名を追加
   const updatedResults: PokemonWithJapaneseName[] = await Promise.all(
     pokemonList.results.map(async (pokemon) => {
-      // ポケモン種族のURLを生成
-      const speciesUrl = pokemon.url.replace('https://pokeapi.co/api/v2/pokemon/', 'https://pokeapi.co/api/v2/pokemon-species/');
-      // 日本語名を取得
+      // 2-1. ポケモン種族のURLを生成
+      const speciesUrl = pokemon.url.replace(
+        'https://pokeapi.co/api/v2/pokemon/',
+        'https://pokeapi.co/api/v2/pokemon-species/'
+      );
+      // 2-2. 日本語名を取得
       const japaneseName = await fetchPokemonJapaneseName(speciesUrl);
-      // ポケモンの詳細情報を取得
+      // 2-3. ポケモンの詳細情報を取得
       const pokemonDetails: Pokemon = await fetch(pokemon.url).then(res => res.json());
-      
-      // 必要な情報を組み合わせて返す
+
+      // 2-4. 必要な情報を組み合わせて返す
       return {
         ...pokemon,
         japaneseName,
@@ -53,8 +59,7 @@ export const fetchPokemonListWithJapaneseNames = async (offset: number = 0, limi
       };
     })
   );
-  
-  // 元のリスト情報と更新された結果を組み合わせて返す
+
+  // 3. 元のリスト情報と更新された結果を組み合わせて返す
   return { ...pokemonList, results: updatedResults };
 };
-
